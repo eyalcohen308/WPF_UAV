@@ -19,3 +19,6 @@ C:\Users\eyalc\source\repos\FlightSimulator\FlightSimulator\obj\x64\Debug\Flight
 C:\Users\eyalc\source\repos\FlightSimulator\FlightSimulator\obj\x64\Debug\FlightSimulator.csproj.CoreCompileInputs.cache
 C:\Users\eyalc\source\repos\FlightSimulator\FlightSimulator\obj\x64\Debug\FlightSimulator.exe
 C:\Users\eyalc\source\repos\FlightSimulator\FlightSimulator\obj\x64\Debug\FlightSimulator.pdb
+C:\Users\eyalc\source\repos\FlightSimulator\FlightSimulator\obj\x64\Debug\Views\AutoPilot.g.cs
+C:\Users\eyalc\source\repos\FlightSimulator\FlightSimulator\obj\x64\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\eyalc\source\repos\FlightSimulator\FlightSimulator\obj\x64\Debug\Views\AutoPilot.baml

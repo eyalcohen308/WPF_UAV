@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="FlightSimulator.Views.Manual"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FlightSimulator.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="430" d:DesignWidth="470">
+    <Grid MinHeight="430" MinWidth="470">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="2" VerticalAlignment="Center" Text="← thorttel →" FontSize="15">
+            <TextBlock.LayoutTransform>
+                <RotateTransform Angle="90"/>
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+
+        <Slider Name="ThrottleSlider" Grid.Row="2" Grid.Column="1" Value="{Binding ChangeThrottle}" Minimum="0" Maximum="1" Width="29" TickPlacement="TopLeft" TickFrequency="0.1" Orientation="Vertical"></Slider>
+
+        <TextBlock Name="ThrottleLabel" Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=ThrottleSlider,Path=Value,StringFormat=N2}"></TextBlock>
+        
+        <local:Joystick x:Name="Stick" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Aileron="{Binding AileronVal,Mode=OneWayToSource}" Elevator="{Binding ElevatorVal,Mode=OneWayToSource}"></local:Joystick>
+        
+    </Grid>
+</UserControl>
