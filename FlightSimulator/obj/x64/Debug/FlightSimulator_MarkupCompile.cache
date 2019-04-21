@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\eyalc\source\repos\FlightSimulator\FlightSimulator\App.xaml
-4-1100708113
+5-72254906
 
-16-184576066
+171038650508
 18-1808429339
-MainWindow.xaml;Views\AutoPilot.xaml;Views\FlightBoard.xaml;Views\Joystick.xaml;
+MainWindow.xaml;Views\AutoPilot.xaml;Views\FlightBoard.xaml;Views\Joystick.xaml;Views\Manual.xaml;
 
 False
 
