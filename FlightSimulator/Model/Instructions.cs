@@ -38,6 +38,11 @@ namespace FlightSimulator.Model
                 return null == instructions ? new Instructions() : instructions;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="val"></param>
         public void ManualSendCommand(string command,double val)
         {
             if (client == null)
@@ -53,6 +58,10 @@ namespace FlightSimulator.Model
                 Console.WriteLine("command: " + line + " sent");
             }
         }
+
+        /**
+         * Init all map path values by command name.
+         * */
         private void InitPathMapValues()
         {
             commandsToPath.Add("rudder", "/controls/flight/rudder");

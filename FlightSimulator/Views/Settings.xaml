@@ -1,0 +1,48 @@
+﻿<Window x:Class="FlightSimulator.Views.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlightSimulator.Views"
+        mc:Ignorable="d"
+        Title="Settings" Height="180" Width="300" MinHeight="180" MinWidth="300">
+    <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Padding" Value="3"/>
+                    <Setter Property="Margin" Value="3"/>
+                    <Setter Property="FontSize" Value="14"/>
+                </Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Padding" Value="3"/>
+                    <Setter Property="Margin" Value="3"/>
+                </Style>
+            </Grid.Resources>
+            <Viewbox>
+                <TextBlock> Flight Server IP:</TextBlock>
+            </Viewbox>
+            <Viewbox Grid.Row="1">
+                <TextBlock> Flight Info Port:</TextBlock>
+            </Viewbox>
+            <Viewbox Grid.Row="2">
+                <TextBlock> Flight Command Port:</TextBlock>
+            </Viewbox>
+            <TextBox x:Name="IP" Grid.Column="2" Text="{Binding FlightServerIP}"></TextBox>
+            <TextBox x:Name="InfoPort" Grid.Row="1" Grid.Column="2" Text="{Binding FlightInfoPort}"></TextBox>
+            <TextBox x:Name="CommandPort" Grid.Row="2" Grid.Column="2" Text="{Binding FlightCommandPort}"></TextBox>
+        <WrapPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+        <Button x:Name="OK" Height="30" Width="60" Margin="10" Padding="5" Command="{Binding ClickCommand}">OK</Button>
+        <Button x:Name="Cancel" Height="30" Width="60" Margin="10" Padding="5" Command="{Binding CancelCommand}">Cancel</Button>
+        </WrapPanel>
+        </Grid>
+</Window>

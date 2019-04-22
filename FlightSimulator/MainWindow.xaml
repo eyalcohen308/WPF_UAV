@@ -8,6 +8,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <var:Manual></var:Manual>
+        <var:LeftUserControl></var:LeftUserControl>
     </Grid>
 </Window>

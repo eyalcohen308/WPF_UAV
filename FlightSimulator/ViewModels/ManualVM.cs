@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using FlightSimulator.Model;
 namespace FlightSimulator.ViewModels
 {
     class ManualVM : BaseNotify
@@ -12,12 +12,14 @@ namespace FlightSimulator.ViewModels
         private double _throttle;
         private double _rudder;
         private double _elevator;
-        public ManualVM()
+        private Instructions instructionsModel;
+        public ManualVM(Instructions ins)
         {
             _aileron = 0;
             _elevator = 0;
             _rudder = 0;
             _throttle = 0;
+            instructionsModel = ins;
         }
         public double ChangeRudder
         {
@@ -29,7 +31,8 @@ namespace FlightSimulator.ViewModels
             {
                 _rudder = value;
                 NotifyPropertyChanged("ChangeRudder");
-                // Send to property changed to commands and from there to server. 
+                // Send to property changed to commands and from there to server.
+                instructionsModel.ManualSendCommand("rudder", value);
             }
 
         }
@@ -43,7 +46,8 @@ namespace FlightSimulator.ViewModels
             {
                 _throttle = value;
                 NotifyPropertyChanged("ChangeThrottle");
-                // Send to property changed to commands and from there to server. 
+                // Send to property changed to commands and from there to server.
+                instructionsModel.ManualSendCommand("throttle", value);
             }
         }
         public double ChangeAileron
@@ -56,7 +60,8 @@ namespace FlightSimulator.ViewModels
             {
                 _aileron = value;
                 NotifyPropertyChanged("ChangeAileron");
-                // Send to property changed to commands and from there to server. 
+                // Send to property changed to commands and from there to server.
+                instructionsModel.ManualSendCommand("aileron", value);
             }
         }
         public double ChangeElevator
@@ -69,7 +74,8 @@ namespace FlightSimulator.ViewModels
             {
                 _elevator = value;
                 NotifyPropertyChanged("ChangeElevator");
-                // Send to property changed to commands and from there to server. 
+                // Send to property changed to commands and from there to server.
+                instructionsModel.ManualSendCommand("elevator",value);
             }
         }
     }

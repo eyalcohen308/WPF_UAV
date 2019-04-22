@@ -24,3 +24,9 @@ C:\Users\eyalc\source\repos\FlightSimulator\FlightSimulator\obj\x64\Debug\Genera
 C:\Users\eyalc\source\repos\FlightSimulator\FlightSimulator\obj\x64\Debug\Views\AutoPilot.baml
 C:\Users\eyalc\source\repos\FlightSimulator\FlightSimulator\obj\x64\Debug\Views\Manual.g.cs
 C:\Users\eyalc\source\repos\FlightSimulator\FlightSimulator\obj\x64\Debug\Views\Manual.baml
+C:\Users\eyalc\source\repos\FlightSimulator\FlightSimulator\obj\x64\Debug\Views\RightUserControl.g.cs
+C:\Users\eyalc\source\repos\FlightSimulator\FlightSimulator\obj\x64\Debug\Views\RightUserControl.baml
+C:\Users\eyalc\source\repos\FlightSimulator\FlightSimulator\obj\x64\Debug\Views\Settings.g.cs
+C:\Users\eyalc\source\repos\FlightSimulator\FlightSimulator\obj\x64\Debug\Views\Settings.baml
+C:\Users\eyalc\source\repos\FlightSimulator\FlightSimulator\obj\x64\Debug\Views\LeftUserControl.g.cs
+C:\Users\eyalc\source\repos\FlightSimulator\FlightSimulator\obj\x64\Debug\Views\LeftUserControl.baml
