@@ -8,7 +8,7 @@ using FlightSimulator.Model.Interface;
 using FlightSimulator.ViewModels;
 using System.Net;
 using System.Net.Sockets;
-namespace FlightSimulator.ViewModels.Windows
+namespace FlightSimulator.Model
 {
     class Server:BaseNotify
     {
@@ -31,7 +31,7 @@ namespace FlightSimulator.ViewModels.Windows
         {
             get
             {
-                return server == null ? new Server() : server;
+                return server == null ? server = new Server() : server;
             }
         }
         public string SocketData
@@ -55,10 +55,15 @@ namespace FlightSimulator.ViewModels.Windows
         }
         public void open(string ip, int port)
         {
+            if (isServerOpen())
+            {
+                return;
+            }
             try
             {
                 IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ip), port);
                 tcpListener = new TcpListener(ep);
+                
                 tcpListener.Start();
                 Console.WriteLine("Waiting for incoming connections...");
                 TcpClient client = tcpListener.AcceptTcpClient();

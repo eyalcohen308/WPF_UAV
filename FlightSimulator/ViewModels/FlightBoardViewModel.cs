@@ -4,17 +4,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using FlightSimulator.Model;
+using System.Windows.Input;
+using System.ComponentModel;
 namespace FlightSimulator.ViewModels
 {
     public class FlightBoardViewModel : BaseNotify
     {
         private double lon, lat;
-        
+        private Info info;
         public FlightBoardViewModel()
         {
+            info = new Info();
+            lon = 0;
+            lat = 0;
+            info.PropertyChanged += updateData;
+           
+        }
+        private void updateData(object sender,PropertyChangedEventArgs e)
+        {
+            Lon = info.Lon;
+            Lat = info.Lat;
+            NotifyPropertyChanged("Lon");
+            NotifyPropertyChanged("Lat");
 
         }
+
         public double Lon
         {
             get
@@ -24,7 +39,6 @@ namespace FlightSimulator.ViewModels
             set
             {
                 lon = value;
-                NotifyPropertyChanged("Lon");
             }
         }
 
@@ -37,8 +51,9 @@ namespace FlightSimulator.ViewModels
             set
             {
                 lat = value;
-                NotifyPropertyChanged("Lat");
             }
         }
+
+
     }
 }

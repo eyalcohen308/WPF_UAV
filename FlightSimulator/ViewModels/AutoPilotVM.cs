@@ -71,10 +71,12 @@ namespace FlightSimulator.ViewModels
         }
         private void SendInstructions()
         {
-            //...
+            string[] delimeter = { "\r\n" };
+            List<string> lines = text.Split(delimeter, StringSplitOptions.None).ToList();
             startedWrite = false;
             //text = "";
             //NotifyPropertyChanged("TextProperty");
+            Instructions.getInstance.send(lines);
             NotifyPropertyChanged("Color");
         }
     }

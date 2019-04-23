@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using FlightSimulator.Model;
 namespace FlightSimulator
 {
     /// <summary>
@@ -21,7 +21,19 @@ namespace FlightSimulator
     {
         public MainWindow()
         {
+            Closed += closeWindow;
             InitializeComponent();
+        }
+        private void closeWindow(object sender, EventArgs e)
+        {
+            if (Server.getInstnace.isServerOpen())
+            {
+                Server.getInstnace.close();
+            }
+            if (Instructions.getInstance.isOpen())
+            {
+                Instructions.getInstance.close();
+            }
         }
     }
 }

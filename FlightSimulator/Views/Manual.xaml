@@ -27,7 +27,7 @@
                 <RotateTransform Angle="90"/>
             </TextBlock.LayoutTransform>
         </TextBlock>
-        <Slider Name="ThrottleSlider" Grid.Row="2" Grid.Column="1" Value="{Binding ChangeThrottle}" Minimum="0" Maximum="1" Width="29" TickPlacement="TopLeft" TickFrequency="0.1" Orientation="Vertical"></Slider>
+        <Slider Name="ThrottleSlider" Grid.Row="2" Grid.Column="1" Value="{Binding ChangeThrottle}" Minimum="-1" Maximum="1" Width="29" TickPlacement="TopLeft" TickFrequency="0.1" Orientation="Vertical"></Slider>
         <TextBlock Name="ThrottleVal" Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=ThrottleSlider,Path=Value,StringFormat=N2}"></TextBlock>
 
         <local:Joystick x:Name="Stick" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Aileron="{Binding ChangeAileron,Mode=OneWayToSource}" Elevator="{Binding ChangeElevator,Mode=OneWayToSource}"></local:Joystick>

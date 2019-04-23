@@ -22,7 +22,7 @@ namespace FlightSimulator.Model
         {
             get
             {
-                return data == null ? new Data() : data;
+                return data == null ? data=new Data() : data;
             }
         }
         // indexer, can use info with [], return the number if key exists, else return Nan.

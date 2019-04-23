@@ -15,7 +15,7 @@ namespace FlightSimulator.Model
     {
         private TcpClient client;
         private NetworkStream stream;
-        private readonly object mut;
+        private readonly static object mut = new object();
         private static Instructions instructions=null;
         private Dictionary<string, string> commandsToPath;
         
@@ -27,7 +27,6 @@ namespace FlightSimulator.Model
             client = null;
             stream = null;
             commandsToPath = new Dictionary<string, string>();
-            mut = new object();
             InitPathMapValues();
         }
         public static Instructions getInstance
@@ -35,11 +34,14 @@ namespace FlightSimulator.Model
             get
             {
                 // if exists return instance, else create it and return.
-                return null == instructions ? new Instructions() : instructions;
+                lock (mut)
+                {
+                    return null == instructions ? instructions = new Instructions() : instructions;
+                }
             }
         }
         /// <summary>
-        /// 
+        /// send the command after set like it should be.
         /// </summary>
         /// <param name="command"></param>
         /// <param name="val"></param>
@@ -50,12 +52,13 @@ namespace FlightSimulator.Model
                 return;
             }
             string line = "set " + commandsToPath[command] + " ";
-            line += val.ToString("N5");
+            line += val.ToString("N5") + "\r\n";
             lock (mut)
             {
                 byte[] buffer = System.Text.Encoding.ASCII.GetBytes(line.ToString());
                 stream.Write(buffer, 0, buffer.Length);
                 Console.WriteLine("command: " + line + " sent");
+                stream.Flush();
             }
         }
 
@@ -64,10 +67,50 @@ namespace FlightSimulator.Model
          * */
         private void InitPathMapValues()
         {
-            commandsToPath.Add("rudder", "/controls/flight/rudder");
-            commandsToPath.Add("throttle", "/controls/engines/current-engine/throttle");
-            commandsToPath.Add("aileron", "/controls/flight/aileron");
-            commandsToPath.Add("elevator", "/controls/flight/elevator");
+            commandsToPath.Add("rudder", "controls/flight/rudder");
+            commandsToPath.Add("throttle", "controls/engines/current-engine/throttle");
+            commandsToPath.Add("aileron", "controls/flight/aileron");
+            commandsToPath.Add("elevator", "controls/flight/elevator");
+        }
+        public void open(string ip, int port)
+        {
+            if (isOpen())
+            {
+                return;
+            }
+            client = new TcpClient(ip, port);
+            stream = client.GetStream();
+            stream.Flush();
+            Console.WriteLine("connected, " + ip + " " + port.ToString());
+        }
+        public void close()
+        {
+            stream.Close();
+            client.Close();
+        }
+        public void send(List<string> commands)
+        {
+            if (null == client) return;
+            Thread t = new Thread(() =>
+            {
+                foreach (string command in commands)
+                {
+                    string cmd = command + "\r\n";
+                    lock (mut)
+                    {
+                        byte[] buffer = System.Text.Encoding.ASCII.GetBytes(cmd.ToString());
+                        stream.Write(buffer, 0, buffer.Length);
+                        Console.WriteLine("command: " + cmd + " sent");
+                        stream.Flush();
+                    }
+                    Thread.Sleep(2000);
+                }
+            });
+            t.Start();
+        }
+        public bool isOpen()
+        {
+            return null != this.client;
         }
     }
 }

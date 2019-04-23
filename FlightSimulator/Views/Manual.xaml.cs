@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using FlightSimulator.ViewModels;
+using FlightSimulator.Model;
 namespace FlightSimulator.Views
 {
     /// <summary>
@@ -23,6 +24,7 @@ namespace FlightSimulator.Views
         public Manual()
         {
             InitializeComponent();
+            DataContext = new ManualVM(Instructions.getInstance);
         }
     }
 }
