@@ -16,5 +16,5 @@ C:\Users\eyalc\source\repos\FlightSimulator\FlightSimulator\App.xaml
 18-1808429339
 MainWindow.xaml;Views\AutoPilot.xaml;Views\FlightBoard.xaml;Views\Joystick.xaml;Views\LeftUserControl.xaml;Views\Manual.xaml;Views\RightUserControl.xaml;Views\Settings.xaml;
 
-False
+True
 
