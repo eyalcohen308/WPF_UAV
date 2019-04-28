@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="430" d:DesignWidth="470">
     <Grid MinHeight="430" MinWidth="470">
+      <!-- the manual view-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
